@@ -27,7 +27,7 @@
       <th scope="row">{{$post->id}}</th>
       <td>{{$post->title}}</td>
       <td>{{$post->description}}</td>
-      <td>{{$post->created_at}}</td>
+      <td>{{$post->created_at->format('d/m/Y')}}</td>
       <td>
         <a href="{{route('posts.show',['detailId'=>$post->id])}}" class="btn btn-success">Post Details</a>
         <a href="{{route('posts.edit',['postId'=>$post->id])}}" class="btn btn-info">Edit</a>
