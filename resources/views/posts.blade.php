@@ -33,8 +33,5 @@
   </tbody>
 </table>
 </body>
-<<<<<<< HEAD
 @endsection
-=======
 </html>
->>>>>>> f5faafada2c8cc0f5fde32c9ff63e5bbcc1970ca
