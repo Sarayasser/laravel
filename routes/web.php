@@ -16,10 +16,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::group(['middleware'=>'auth'],function(){
 Route::get('/posts','PostsController@index')->name('posts.index');
 Route::get('/posts/create','PostsController@create')->name('Post.create');
 Route::post('/posts','PostsController@store')->name('posts.store');
-Route::get('/posts/{detailId}','PostsController@show')->name('posts.show');
+Route::get('/posts/{slug}','PostsController@show')->name('posts.show');
 Route::get('/delete/{id}','PostsController@delete')->name('posts.delete');
 Route::get('/edit/{postId}','PostsController@edit')->name('posts.edit');
 Route::post('/posts/{post}','PostsController@update')->name('posts.update');
+});
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

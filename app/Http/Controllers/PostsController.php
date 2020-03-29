@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StorePostRequest;
+use Illuminate\Support\Str;
 use App\Post;
 use App\User;
 
@@ -20,16 +22,17 @@ class PostsController extends Controller
 
     public function show(){
     	$request=request();
-    	$id=$request->detailId;
-    	$post=Post::where('id',$id)->first();
+    	$slug=$request->slug;
+    	$post=Post::where('slug',$slug)->first();
         $user=User::where('id',$post->user_id)->first();
     	return view('show',['post'=>$post],['user'=>$user]);
     }
 
-    public function store(){
-    $request=request();
-    	Post::create([
+    public function store(StorePostRequest $request){
+        $slug= Str::slug($request->title, '-');
+        Post::create([
     		'title'=>$request->title,
+            'slug'=>$slug,
     		'description' => $request->description,
     		'user_id' => $request->id
     	]);
@@ -51,10 +54,11 @@ class PostsController extends Controller
     	return view('edit',['post'=>$post],['user'=>$user]);
     }
 
-    public function update(){
-    	$request=request();
+    public function update(StorePostRequest $request){
+        $slug= Str::slug($request->title, '-');
     	$posts=Post::where('id',$request->post)->first()->update([
     		'title'=>$request->title,
+            'slug'=>$slug,
     		'description' => $request->description,
     		'user_id' => $request->id
     	]);
