@@ -66,6 +66,10 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
+                                <a href="{{ route('login.provider', 'google') }}" 
+  class="btn btn-secondary">{{ __('Google Sign in') }}</a>
+                                <a href="{{ route('login.provider', 'github') }}" 
+  class="btn btn-secondary bg-info">{{ __('Github Sign in') }}</a>
                             </div>
                         </div>
                     </form>

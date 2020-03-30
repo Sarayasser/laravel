@@ -17,7 +17,11 @@ return [
         'guard' => 'web',
         'passwords' => 'users',
     ],
-
+    'socialite' => [
+    'drivers' => [
+        'google',
+    ],
+    ],
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards

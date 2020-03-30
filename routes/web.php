@@ -26,7 +26,8 @@ Route::get('/edit/{postId}','PostsController@edit')->name('posts.edit');
 Route::post('/posts/{post}','PostsController@update')->name('posts.update');
 });
 
-
 Auth::routes();
+Route::get('/redirect/{driver}', 'Auth\LoginController@redirectToProvider')->name('login.provider');
+Route::get('/home/{provider}', 'Auth\LoginController@handleProviderCallback')->name('login.access');
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
